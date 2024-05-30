@@ -32,7 +32,7 @@ EOF
 # WAL-G configuration
 cat >> "$PGDATA/postgresql.conf" <<EOF
 archive_mode = on
-archive_command = 'wal-g wal-push %p'
+archive_command = '/usr/local/bin/wal-g wal-push %p'
 archive_timeout = 60
 EOF
 

@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
     curl \
     wget \
     lz4 \
+    cron \
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -20,9 +21,10 @@ RUN echo "postgres ALL=(root) NOPASSWD: /usr/bin/mkdir, /bin/chown" > /etc/sudoe
 # Add init scripts
 COPY init-ssl.sh /docker-entrypoint-initdb.d/
 COPY wrapper.sh /usr/local/bin/wrapper.sh
+COPY backup.sh /usr/local/bin/backup.sh
 
 # Set permissions
-RUN chmod +x /docker-entrypoint-initdb.d/init-ssl.sh /usr/local/bin/wrapper.sh
+RUN chmod +x /docker-entrypoint-initdb.d/init-ssl.sh /usr/local/bin/wrapper.sh /usr/local/bin/backup.sh
 
 # Expose ports
 EXPOSE 5432
