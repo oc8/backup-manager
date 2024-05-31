@@ -28,13 +28,3 @@ ssl_cert_file = '$SSL_DIR/server.crt'
 ssl_key_file = '$SSL_DIR/server.key'
 ssl_ca_file = '$SSL_DIR/root.crt'
 EOF
-
-# WAL-G configuration
-cat >> "$PGDATA/postgresql.conf" <<EOF
-archive_mode = on
-archive_command = '/usr/local/bin/wal-g wal-push %p'
-archive_timeout = 60
-EOF
-
-# Create the necessary directories for WAL-G
-mkdir -p /var/lib/postgresql/wal
