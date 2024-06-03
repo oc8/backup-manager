@@ -11,11 +11,11 @@ models:
       cron: ${BACKUP_SCHEDULE}
     compress_with:
       type: ${BACKUP_COMPRESS}
-#    encrypt_with:
-#      type: openssl
-#      password: ${ENCRYPT_PASS}
-#      salt: true
-#      base64: false
+    encrypt_with:
+      type: openssl
+      password: ${ENCRYPT_PASS}
+      salt: true
+      base64: false
     storages:
       minio:
         type: minio
