@@ -1,5 +1,7 @@
 # Pg-GoBackup
 
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/pI1avl?referralCode=Nv5vOn)
+
 docs: https://gobackup.github.io/getting-started
 
 ## Ports
