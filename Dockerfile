@@ -20,11 +20,12 @@ RUN echo "postgres ALL=(root) NOPASSWD: /usr/bin/mkdir, /bin/chown" > /etc/sudoe
 
 # Add init scripts
 COPY init-ssl.sh /docker-entrypoint-initdb.d/
+COPY create-dbs.sh /docker-entrypoint-initdb.d/
 COPY wrapper.sh /usr/local/bin/wrapper.sh
 COPY generate_gobackup_config.sh /usr/local/bin/generate_gobackup_config.sh
 
 # Set permissions
-RUN chmod +x /docker-entrypoint-initdb.d/init-ssl.sh /usr/local/bin/wrapper.sh /usr/local/bin/generate_gobackup_config.sh
+RUN chmod +x /docker-entrypoint-initdb.d/init-ssl.sh /docker-entrypoint-initdb.d/create-dbs.sh /usr/local/bin/wrapper.sh /usr/local/bin/generate_gobackup_config.sh
 
 # Create directory for GoBackup config
 RUN mkdir -p /etc/gobackup
